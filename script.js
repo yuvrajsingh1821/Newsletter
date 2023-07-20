@@ -6,7 +6,7 @@ window.addEventListener("load", () => fetchNews("India"));
 //function to fetch the news
 
 async function fetchNews(query) {
-  const res = await fetch(`${url}${query}&apikey=${API_KEY}`);
+  const res = await fetch(`${url}${query}&lang=en&apikey=${API_KEY}`);
   const data = await res.json();
   console.log(data);
   bindData(data.articles);
