@@ -6,7 +6,7 @@ window.addEventListener("load", () => fetchNews("India"));
 //function to fetch the news
 
 async function fetchNews(query) {
-  const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+  const res = await fetch(`${url}${query}&apikey=${API_KEY}`);
   const data = await res.json();
   console.log(data);
   bindData(data.articles);
@@ -26,7 +26,7 @@ function bindData(articles) {
   cardsContainer.innerHTML = "";
 
   articles.forEach((article) => {
-    if (!article.urlToImage) return;
+    if (!article.image) return;
     const cardClone = cardsTemplate.content.cloneNode(true);
     fillDataInCards(cardClone, article);
     cardsContainer.appendChild(cardClone);
@@ -41,7 +41,7 @@ function fillDataInCards(cardClone, article) {
   const newsSource = cardClone.querySelector("#news-source");
   const newsDesc = cardClone.querySelector("#news-desc");
 
-  newsImg.src = article.urlToImage;
+  newsImg.src = article.image;
   newsTitle.innerHTML = article.title;
   newsDesc.innerHTML = article.description;
 
